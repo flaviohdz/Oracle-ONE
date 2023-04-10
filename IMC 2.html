@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Calculadora de IMC</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		h1 {
+			text-align: center;
+		}
+		form {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+		}
+		input[type="number"] {
+			padding: 10px;
+			margin: 10px;
+			border-radius: 5px;
+			border: none;
+			box-shadow: 0 0 5px rgba(0,0,0,0.3);
+			font-size: 1.2em;
+			width: 100%;
+			max-width: 300px;
+			box-sizing: border-box;
+			text-align: center;
+		}
+		input[type="submit"] {
+			background-color: #4286f4;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			padding: 10px;
+			margin: 20px;
+			font-size: 1.2em;
+			cursor: pointer;
+			width: 100%;
+			max-width: 300px;
+			box-sizing: border-box;
+		}
+		p {
+			text-align: center;
+			font-size: 1.5em;
+			font-weight: bold;
+			margin-top: 50px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Calculadora de IMC</h1>
+	<form onsubmit="calcularIMC(); return false;">
+		<label for="peso">Peso (kg)</label>
+		<input type="number" id="peso" required>
+		<label for="altura">Altura (cm)</label>
+		<input type="number" id="altura" required>
+		<input type="submit" value="Calcular IMC">
+	</form>
+	<p id="resultado"></p>
+
+	<script>
+		function calcularIMC() {
+			let peso = parseFloat(document.getElementById("peso").value);
+			let altura = parseFloat(document.getElementById("altura").value);
+			let imc = peso / Math.pow(altura/100, 2);
+			document.getElementById("resultado").textContent = `Tu IMC es: ${imc.toFixed(2)}`;
+		}
+	</script>
+</body>
+</html>
